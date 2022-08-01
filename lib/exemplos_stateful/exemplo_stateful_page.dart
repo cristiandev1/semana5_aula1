@@ -1,3 +1,4 @@
+import 'package:exemplo_state/exemplos_stateful/exemplo_todo_list_page.dart';
 import 'package:flutter/material.dart';
 
 class ExemploStatefulPage extends StatefulWidget {
@@ -12,6 +13,23 @@ class _ExemploStatefulPageState extends State<ExemploStatefulPage> {
 
   void _incrementar() {
     cont++;
+    setState(() {});
+    
+    //Exemplificando erro ao remover tela da arvore e tentar atualizar o estado dela (push e pushReplacement)
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const ExemploTodoListPage()),
+    );
+  }
+
+  @override
+  void dispose() {
+    setState(() {
+      cont = 0;
+    });
+
+    super.dispose();
   }
 
   @override
